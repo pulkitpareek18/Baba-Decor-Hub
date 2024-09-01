@@ -10,9 +10,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">  
-    <link rel="stylesheet" type="text/css" href="../css/magnific-popup.css">  
-    <link rel="stylesheet" type="text/css" href="../css/slick.min.css">
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/magnific-popup.css">  
+    <link rel="stylesheet" type="text/css" href="/css/slick.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="/">
@@ -36,72 +36,112 @@
             });
     </script>
 
-
   <div class="product-range-block">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
           <!--<img src="./images/logo.png" width="150px" class="mb-4">-->
-          <h2 class="mb-3 thm-clr">Food Serving Counters<i></i></h2>
-          <div class="home-product-range-wraper">
-            			
-			
-			        
-            <div class="product-range-item">
-              <a href="https://www.anupamroyals.com/list/buffet-counters"> </a>
-              <div class="product-range-cover">
-                <a href="/category/counter/buffet-counters"><img src="https://www.anupamroyals.com./public/common_images/cms_1717130781counter.gif" class="img-fluid"></a>
-              </div>
-              <h6> <span></span>Buffet Counters </h6>
-            </div>
-            			
-			
-			        
-            <div class="product-range-item">
-              <a href="https://www.anupamroyals.com/list/chaat-counters"> </a>
-              <div class="product-range-cover">
-                <a href="https://www.anupamroyals.com/list/chaat-counters"><img src="https://www.anupamroyals.com./public/common_images/cms_1717136434fru.png" class="img-fluid"></a>
-              </div>
-              <h6> <span></span>Chaat Counters </h6>
-            </div>
-            			
-			
-			        
-            <div class="product-range-item">
-              <a href="https://www.anupamroyals.com/list/fruitsalad-counter"> </a>
-              <div class="product-range-cover">
-                <a href="https://www.anupamroyals.com/list/fruitsalad-counter"><img src="https://www.anupamroyals.com./public/common_images/cms_1717135788fruit.png" class="img-fluid"></a>
-              </div>
-              <h6> <span></span>Fruit/Salad Counter </h6>
-            </div>
-            			
-			
-			        
-            <div class="product-range-item">
-              <a href="https://www.anupamroyals.com/list/coffee-counters"> </a>
-              <div class="product-range-cover">
-                <a href="https://www.anupamroyals.com/list/coffee-counters"><img src="https://www.anupamroyals.com./public/common_images/cms_1633497276Untitled-9.png" class="img-fluid"></a>
-              </div>
-              <h6> <span></span>Coffee/Tea Counters </h6>
-            </div>
-            			
-			
-			        
-            <div class="product-range-item">
-              <a href="https://www.anupamroyals.com/list/various-segments-of-counter"> </a>
-              <div class="product-range-cover">
-                <a href="https://www.anupamroyals.com/list/various-segments-of-counter"><img src="https://www.anupamroyals.com./public/common_images/cms_163349772811.png" class="img-fluid"></a>
-              </div>
-              <h6> <span></span>Various Segments of Counter </h6>
-            </div>
-                      </div>
-          <!--<div class="product-range-view-all">
+          <h2 class="mb-3 thm-clr">Buffet Counter<i></i></h2>
+          <div id="product_images" class="home-product-range-wraper"></div>
+
+          <script>
+            let imageNumber = 1;
+            for(let i = 0; i<13; i++){
+            const newDiv = document.createElement('div');
+            newDiv.classList.add('product-range-item');
+
+            // Create the inner structure
+            newDiv.innerHTML = `
+                <div class="product-range-cover">
+                    <img src="/product_images_categorised/counters/buffet/counter (${imageNumber}).jpg" class="img-fluid">
+                </div>
+            `;
+            document.getElementById('product_images').appendChild(newDiv);
+            imageNumber++;
+            }
+
+          </script>
+          
+
+          <div id="imageModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="modalImage">
+         </div>
+
+          <div style="margin-bottom: 11px;" class="product-range-view-all">
             <a href="javascript::void(0);" id="products-load-more"> View More </a>
-          </div>-->
+          </div>
         </div>
       </div>
     </div>
   </div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const productImagesDiv = document.getElementById('product_images');
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const span = document.getElementsByClassName('close')[0];
+
+    productImagesDiv.addEventListener('click', function(event) {
+        if (event.target.tagName === 'IMG') {
+            modal.style.display = 'block';
+            modalImg.src = event.target.src;
+        }
+    });
+
+    span.onclick = function() {
+        modal.style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+});
+</script>
+
+<style>
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+</style>
 
 
   <style>
@@ -200,16 +240,16 @@ $('.testi.owl-carousel').owlCarousel({
         }
     }
 </script>
-
 <div id="footer"></div>
     
-    <script>
-        fetch('/footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer').innerHTML = data;
-            });
-    </script>
+<script>
+    fetch('/footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        });
+</script>
+    
 
     <!-- Popup Banner -->
 
@@ -227,22 +267,22 @@ $('.testi.owl-carousel').owlCarousel({
     
     
     <style>
-      #event-banner .modal-body button.close {
-          position: absolute;
-          top: 6px;
-          right: 13px;
-          font-size: 25px;
-      }    
-      div#video-catalogue-slider .catalog-video-wraper {
-          margin: 0px 10px;
-          border-radius: 8px;
-          overflow: hidden;
-      }
+#event-banner .modal-body button.close {
+    position: absolute;
+    top: 6px;
+    right: 13px;
+    font-size: 25px;
+}    
+div#video-catalogue-slider .catalog-video-wraper {
+    margin: 0px 10px;
+    border-radius: 8px;
+    overflow: hidden;
+}
 
-      div#video-catalogue-slider .catalog-video-wraper img {
-          object-fit: cover;
-          aspect-ratio: 1 / 2\;
-      }
+div#video-catalogue-slider .catalog-video-wraper img {
+    object-fit: cover;
+    aspect-ratio: 1 / 2\;
+}
     </style>
     
     
@@ -252,8 +292,8 @@ $('.testi.owl-carousel').owlCarousel({
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-  <script type="text/javascript" src="./js/slick.js"></script>
-  <script type="text/javascript" src="./js/jquery.youtube-background.js"></script>
+  <script type="text/javascript" src="/js/slick.js"></script>
+  <script type="text/javascript" src="/js/jquery.youtube-background.js"></script>
   <script type="text/javascript">
       jQuery(document).ready(function () {
           jQuery('[data-youtube]').youtube_background({
